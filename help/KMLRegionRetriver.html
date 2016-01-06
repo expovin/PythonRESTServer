@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>KMLRegionRetriver - Help Page</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+          crossorigin="anonymous" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+	    h2 {
+		   color:green;
+		}
+		
+        #wrapper {
+             padding-left: 0px;
+             transition: all 0.5s ease 0s;
+        }
+
+        #wrapper.toggled {
+             padding-left: 280px;
+        }
+
+        #sidebar-wrapper {
+             background: #000000 none repeat scroll 0% 0%;
+             height: 100%;
+             left: 280px;
+             margin-left: -280px;
+             overflow-y: auto;
+             position: fixed;
+             transition: all 0.5s ease 0s;
+             width: 0px;
+             z-index: 1000;
+        }
+
+        #wrapper.toggled #sidebar-wrapper {
+             width: 280px;
+        }
+
+        #page-content-wrapper {
+             padding: 15px;
+             position: absolute;
+             width: 100%;
+        }
+
+        #wrapper.toggled #page-content-wrapper {
+             margin-right: -280px;
+             position: absolute;
+        }
+
+        .sidebar-nav {
+             list-style: outside none none;
+             margin: 0px;
+             padding: 0px;
+             position: absolute;
+             top: 0px;
+             width: 280px;
+        }
+
+        .sidebar-nav li {
+             line-height: 40px;
+             text-indent: 20px;
+        }
+
+        .sidebar-nav li a {
+             color: #999999;
+             display: block;
+             text-decoration: none;
+        }
+
+        .sidebar-nav li a:hover {
+             background: rgba(255, 255, 255, 0.2) none repeat scroll 0% 0%;
+             color: #ffffff;
+             text-decoration: none;
+        }
+
+        .sidebar-nav li a:active, .sidebar-nav li a:focus {
+             text-decoration: none;
+        }
+
+        .sidebar-nav > .sidebar-brand {
+             font-size: 18px;
+             height: 65px;
+             line-height: 60px;
+        }
+
+        .sidebar-nav > .sidebar-brand a {
+             color: #999999;
+        }
+
+        .sidebar-nav > .sidebar-brand a:hover {
+             background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%;
+             color: #ffffff;
+        }
+
+        @media (min-width: 768px) {
+          #wrapper { padding-left: 280px; }
+          #wrapper.toggled { padding-left: 0px; }
+          #sidebar-wrapper { width: 280px; }
+          #wrapper.toggled #sidebar-wrapper { width: 0px; }
+          #page-content-wrapper { padding: 20px; position: relative; }
+          #wrapper.toggled #page-content-wrapper { position: relative; margin-right: 0px; }
+
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="index.html">
+                        <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Modules
+                    </a>
+                </li>
+                <li>
+                   <a href="#getKMLFileList"> <span class="glyphicon glyphicon-tag" aria-hidden="true" > getKMLFileList</span></a>
+				</li>                <li>
+                   <a href="#getReagionFromCoordsMulti"> <span class="glyphicon glyphicon-tag" aria-hidden="true" > getReagionFromCoordsMulti</span></a>
+				</li>                <li>
+                   <a href="#getRegionromFromCoords"> <span class="glyphicon glyphicon-tag" aria-hidden="true" > getRegionromFromCoords</span></a>
+				</li>                <li>
+                   <a href="#getRegionPolygons"> <span class="glyphicon glyphicon-tag" aria-hidden="true" > getRegionPolygons</span></a>
+				</li>                <li>
+                   <a href="#saveCash"> <span class="glyphicon glyphicon-tag" aria-hidden="true" > saveCash</span></a>
+				</li>                <li>
+                   <a href="#readCash"> <span class="glyphicon glyphicon-tag" aria-hidden="true" > readCash</span></a>
+				</li>                <li>
+                   <a href="#getRegionList"> <span class="glyphicon glyphicon-tag" aria-hidden="true" > getRegionList</span></a>
+				</li>                <li>
+                   <a href="#cash"> <span class="glyphicon glyphicon-tag" aria-hidden="true" > cash</span></a>
+				</li>                <li>
+                   <a href="#doReload"> <span class="glyphicon glyphicon-tag" aria-hidden="true" > doReload</span></a>
+				</li>                <li>
+                   <a href="#getRegionSquarefromCoords"> <span class="glyphicon glyphicon-tag" aria-hidden="true" > getRegionSquarefromCoords</span></a>
+				</li>                <li>
+                   <a href="#info"> <span class="glyphicon glyphicon-tag" aria-hidden="true" > info</span></a>
+				</li>                <li>
+                   <a href="#getHelp"> <span class="glyphicon glyphicon-tag" aria-hidden="true" > getHelp</span></a>
+				</li>                <li>
+                   <a href="#getRegionVertex"> <span class="glyphicon glyphicon-tag" aria-hidden="true" > getRegionVertex</span></a>
+				</li>            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8">
+                            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"> Menu </span>
+                            </a>
+                        <h1><a name="KMLRegionRetriver"> KMLRegionRetriver</a></h1>
+                        <p class="text-justify">This service enable a full REST Server API which allow to call the API via REST protocol. By defaultall file having extensions kml in "/KMLFiles" directory will be read</p>
+                        <h2><a name="getKMLFileList" style="color:green">getKMLFileList</a></h2>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="panel panel-default">
+                                  <!-- Default panel contents -->
+                                  <div class="panel-heading">Method properties</div>
+                                  <!-- Table -->
+                                  <table class="table">
+                                    <tr>
+                                        <td><strong>Method</strong></td>
+                                        <td>GET</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Call</strong></td>
+                                        <td><a href="http://ITMIL-VES:8880/RR/getKMLFileList"><em>/RR/getKMLFileList</em></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Return format</strong></td>
+                                        <td>JSON</td>
+                                    </tr>
+                                  </table>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <p class="text-justify">This method has no params and return the list of KML file read and acquired.</p>
+                            </div>
+                         </div>
+                        <h2><a name="getReagionFromCoordsMulti" style="color:green">getReagionFromCoordsMulti</a></h2>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="panel panel-default">
+                                  <!-- Default panel contents -->
+                                  <div class="panel-heading">Method properties</div>
+                                  <!-- Table -->
+                                  <table class="table">
+                                    <tr>
+                                        <td><strong>Method</strong></td>
+                                        <td>POST</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Call</strong></td>
+                                        <td><a href="http://ITMIL-VES:8880/RR/getReagionFromCoordsMulti"><em>/RR/getReagionFromCoordsMulti</em></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Return format</strong></td>
+                                        <td>JSON</td>
+                                    </tr>
+                                  </table>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <p class="text-justify">This Method expect a JSON with the list of all the Coords to looking for and return the complete result set containinga Region for each Coordinates.</p>
+                            </div>
+                         </div>
+                        <h2><a name="getRegionromFromCoords" style="color:green">getRegionromFromCoords</a></h2>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="panel panel-default">
+                                  <!-- Default panel contents -->
+                                  <div class="panel-heading">Method properties</div>
+                                  <!-- Table -->
+                                  <table class="table">
+                                    <tr>
+                                        <td><strong>Method</strong></td>
+                                        <td>GET</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Call</strong></td>
+                                        <td><a href="http://ITMIL-VES:8880/RR/getRegionromFromCoords/regioni.kml/45.002875,11.504791"><em>/RR/getRegionromFromCoords/&lt;KMLFileName&gt;/&lt;Coords&gt;</em></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Return format</strong></td>
+                                        <td>JSON</td>
+                                    </tr>
+                                  </table>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <p class="text-justify">This method start from the result set returned by the getRegionSquarefromCoords and determinewheter or not a point belong to a specific region.</p>
+                            </div>
+                         </div>
+                        <h2><a name="getRegionPolygons" style="color:green">getRegionPolygons</a></h2>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="panel panel-default">
+                                  <!-- Default panel contents -->
+                                  <div class="panel-heading">Method properties</div>
+                                  <!-- Table -->
+                                  <table class="table">
+                                    <tr>
+                                        <td><strong>Method</strong></td>
+                                        <td>GET</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Call</strong></td>
+                                        <td><a href="http://ITMIL-VES:8880/RR/getRegionPolygons/regioni.kml/Lombardia"><em>/RR/getRegionPolygons/&lt;KMLFileName&gt;/&lt;Region&gt;</em></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Return format</strong></td>
+                                        <td>JSON</td>
+                                    </tr>
+                                  </table>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <p class="text-justify">This Method return all the Polygon vertex for a specific Region in a KML File.</p>
+                            </div>
+                         </div>
+                        <h2><a name="saveCash" style="color:green">saveCash</a></h2>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="panel panel-default">
+                                  <!-- Default panel contents -->
+                                  <div class="panel-heading">Method properties</div>
+                                  <!-- Table -->
+                                  <table class="table">
+                                    <tr>
+                                        <td><strong>Method</strong></td>
+                                        <td>GET</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Call</strong></td>
+                                        <td><a href="http://ITMIL-VES:8880/RR/saveCash"><em>/RR/saveCash</em></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Return format</strong></td>
+                                        <td>JSON</td>
+                                    </tr>
+                                  </table>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <p class="text-justify">This Methos save the cashed point to disk</p>
+                            </div>
+                         </div>
+                        <h2><a name="readCash" style="color:green">readCash</a></h2>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="panel panel-default">
+                                  <!-- Default panel contents -->
+                                  <div class="panel-heading">Method properties</div>
+                                  <!-- Table -->
+                                  <table class="table">
+                                    <tr>
+                                        <td><strong>Method</strong></td>
+                                        <td>GET</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Call</strong></td>
+                                        <td><a href="http://ITMIL-VES:8880/RR/readCash"><em>/RR/readCash</em></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Return format</strong></td>
+                                        <td>JSON</td>
+                                    </tr>
+                                  </table>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <p class="text-justify">This Method replace the cashe with the one saved on disk</p>
+                            </div>
+                         </div>
+                        <h2><a name="getRegionList" style="color:green">getRegionList</a></h2>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="panel panel-default">
+                                  <!-- Default panel contents -->
+                                  <div class="panel-heading">Method properties</div>
+                                  <!-- Table -->
+                                  <table class="table">
+                                    <tr>
+                                        <td><strong>Method</strong></td>
+                                        <td>GET</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Call</strong></td>
+                                        <td><a href="http://ITMIL-VES:8880/RR/getRegionList/regioni.kml"><em>/RR/getRegionList/&lt;KMLFileName&gt;</em></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Return format</strong></td>
+                                        <td>JSON</td>
+                                    </tr>
+                                  </table>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <p class="text-justify">This Method retorn the list of all Regions defined in a specific KML file passed as parameter</p>
+                            </div>
+                         </div>
+                        <h2><a name="cash" style="color:green">cash</a></h2>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="panel panel-default">
+                                  <!-- Default panel contents -->
+                                  <div class="panel-heading">Method properties</div>
+                                  <!-- Table -->
+                                  <table class="table">
+                                    <tr>
+                                        <td><strong>Method</strong></td>
+                                        <td>GET</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Call</strong></td>
+                                        <td><a href="http://ITMIL-VES:8880/RR/cash"><em>/RR/cash</em></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Return format</strong></td>
+                                        <td>JSON</td>
+                                    </tr>
+                                  </table>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <p class="text-justify">This Metho return the cashed points with the region found for each point</p>
+                            </div>
+                         </div>
+                        <h2><a name="doReload" style="color:green">doReload</a></h2>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="panel panel-default">
+                                  <!-- Default panel contents -->
+                                  <div class="panel-heading">Method properties</div>
+                                  <!-- Table -->
+                                  <table class="table">
+                                    <tr>
+                                        <td><strong>Method</strong></td>
+                                        <td>GET</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Call</strong></td>
+                                        <td><a href="http://ITMIL-VES:8880/RR/doReload"><em>/RR/doReload</em></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Return format</strong></td>
+                                        <td>JSON</td>
+                                    </tr>
+                                  </table>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <p class="text-justify">This Methd force the KMLFile reload from /KMLFile directory</p>
+                            </div>
+                         </div>
+                        <h2><a name="getRegionSquarefromCoords" style="color:green">getRegionSquarefromCoords</a></h2>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="panel panel-default">
+                                  <!-- Default panel contents -->
+                                  <div class="panel-heading">Method properties</div>
+                                  <!-- Table -->
+                                  <table class="table">
+                                    <tr>
+                                        <td><strong>Method</strong></td>
+                                        <td>GET</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Call</strong></td>
+                                        <td><a href="http://ITMIL-VES:8880/RR/getRegionSquarefromCoords/regioni.kml/45.002875,11.504791"><em>/RR/getRegionSquarefromCoords/&lt;KMLFileName&gt;/&lt;Coords&gt;</em></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Return format</strong></td>
+                                        <td>JSON</td>
+                                    </tr>
+                                  </table>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <p class="text-justify">This method get the KML file name and coordinates (Long, Lat) and return the listof regions where the Coords are between the Northern, Soutern, Estern and Werstern point of the region itself.This is a necessary condition but not sufficient to determin wheter or not the point belong to some region.This method is used by getRegionFromCoords in order to get the list of all candidate Regions.</p>
+                            </div>
+                         </div>
+                        <h2><a name="info" style="color:green">info</a></h2>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="panel panel-default">
+                                  <!-- Default panel contents -->
+                                  <div class="panel-heading">Method properties</div>
+                                  <!-- Table -->
+                                  <table class="table">
+                                    <tr>
+                                        <td><strong>Method</strong></td>
+                                        <td>GET</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Call</strong></td>
+                                        <td><a href="http://ITMIL-VES:8880/RR/info"><em>/RR/info</em></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Return format</strong></td>
+                                        <td>JSON</td>
+                                    </tr>
+                                  </table>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <p class="text-justify">Just return some info about the RESTServer such as version, author and last build date</p>
+                            </div>
+                         </div>
+                        <h2><a name="getHelp" style="color:green">getHelp</a></h2>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="panel panel-default">
+                                  <!-- Default panel contents -->
+                                  <div class="panel-heading">Method properties</div>
+                                  <!-- Table -->
+                                  <table class="table">
+                                    <tr>
+                                        <td><strong>Method</strong></td>
+                                        <td>GET</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Call</strong></td>
+                                        <td><a href="http://ITMIL-VES:8880/RR/getHelp"><em>/RR/getHelp</em></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Return format</strong></td>
+                                        <td>JSON</td>
+                                    </tr>
+                                  </table>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <p class="text-justify">This Method return the current page with the help for each function. The Help page is automatically build each timeRESTServer start.</p>
+                            </div>
+                         </div>
+                        <h2><a name="getRegionVertex" style="color:green">getRegionVertex</a></h2>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="panel panel-default">
+                                  <!-- Default panel contents -->
+                                  <div class="panel-heading">Method properties</div>
+                                  <!-- Table -->
+                                  <table class="table">
+                                    <tr>
+                                        <td><strong>Method</strong></td>
+                                        <td>GET</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Call</strong></td>
+                                        <td><a href="http://ITMIL-VES:8880/RR/getRegionVertex/regioni.kml/Lombardia"><em>/RR/getRegionVertex/&lt;KMLFileName&gt;/&lt;Region&gt;</em></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Return format</strong></td>
+                                        <td>JSON</td>
+                                    </tr>
+                                  </table>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <p class="text-justify">This Method return the most Northern, Southern, Eastern and Western point for a specific Region in a KMLFile</p>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+                <div class="col-lg-4"></div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+            crossorigin="anonymous"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>

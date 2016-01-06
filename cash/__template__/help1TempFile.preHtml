@@ -1,0 +1,3 @@
+                <li>
+                   <a href="#<%NomeFunzione%>"> <span class="glyphicon glyphicon-tag" aria-hidden="true" > <%NomeFunzione%></span></a>
+				</li>

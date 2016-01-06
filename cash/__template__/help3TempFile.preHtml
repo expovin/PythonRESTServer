@@ -1,0 +1,28 @@
+                        <h2><a name="<%NomeFunzione%>" style="color:green"><%NomeFunzione%></a></h2>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="panel panel-default">
+                                  <!-- Default panel contents -->
+                                  <div class="panel-heading">Method properties</div>
+                                  <!-- Table -->
+                                  <table class="table">
+                                    <tr>
+                                        <td><strong>Method</strong></td>
+                                        <td><%Method%></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Call</strong></td>
+                                        <td><a href="<%Href%>"><em><%Call%></em></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Return format</strong></td>
+                                        <td><%ReturnFormat%></td>
+                                    </tr>
+                                  </table>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <p class="text-justify"><%DescFunzione%></p>
+                            </div>
+                         </div>
