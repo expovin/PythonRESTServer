@@ -8,8 +8,8 @@ PythonRESTServer (or PRS) is a framework which allow the publication of any Pyth
 PREREQUISITE
 
 The prerequisite for PRS are
-   Python 3.x 
-   Tornado.
+   Python 3.x  --> https://www.python.org/download/releases/3.4.0/
+   Tornado 4.3 --> http://www.tornadoweb.org/en/stable/
 
 INSTALLATION
 
@@ -26,6 +26,11 @@ To install a module use the InstallModule.py utility. You have two possibilities
 Eg. To install the KMLRegionRetriver module, just type
     InstallModule.py -w KMLRegionRetriver
 
+UTILITY 
+
+RSCmdUtil.py : Call the importModuleUtil.py and deleteModuleUtil.py to import, verify and delete Modules
+importModuleUtil.py : Import the Modules from local disk or from the network
+deleteModuleUtil.py : Delete the Modules
 
 KNOW ISSUE AND LIMITS
 
