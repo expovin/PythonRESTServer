@@ -22,6 +22,7 @@ INSTALL A MODULE
 
 To install a module use the InstallModule.py utility. You have two possibilities
   1) Download the module zip file and run the install utility pointing the file. InstallModule.py -f <localfile.zip>
+  
   2) Tell to installer to download the module from the network. InstallModule.py -w <ModuleName>
 
 Eg. To install the KMLRegionRetriver module, just type
@@ -37,8 +38,14 @@ KNOW ISSUE AND LIMITS
 
 Because the is the very first shareable versions, a number of know limits will be addressed in further release such as
   1) Implement a correct stop service function
-  2) Improve stability and check during the import
-  3) Centralize the different utility (ImportModule, deleteModule, ...) in just one script file
+  
+  2) Improve stability and check during the import (version and Prefix)
+  
+  3) Centralize the different utility (ImportModule, deleteModule) in just one script file
+  
   4) Implement the upgrade based on the Module version
+  
+  5) Implement log rotation
+  
 
 For a complete and more up to date version of improvements refer to issues section
