@@ -14,7 +14,7 @@ The prerequisite for PRS are
 
 INSTALLATION
 
-To install PRS just download the project and unzip it in an appropriate folder. PRS is designed to work on both Windows and UNIX-like OS.
+To install PRS just download the project and unzip it in an appropriate folder, remove the "-master" from as suffix from the folder name. PRS is designed to work on both Windows and UNIX-like OS.
  To start PRS cd into the Project main folder and execute RESTServer.py start
  To stop the service just kill the related process
 
