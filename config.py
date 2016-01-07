@@ -18,7 +18,7 @@ class FilePath():
 
 class Log():
     fpath='logs'
-    file='example.log'
+    file='General.log'
     flog=os.path.join(fpath,file)
     format='%(asctime)s\t%(module)s:%(funcName)s\t%(levelname)s\t%(lineno)d\t%(message)s'
     level=logging.INFO

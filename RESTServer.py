@@ -1,8 +1,4 @@
 import sys
-sys.path.append ("Modules/KMLRegionRetriver")
-import KMLRegionRetriver 
-
-
 import tornado.escape
 import tornado.ioloop
 import tornado.web

@@ -28,6 +28,8 @@ logging.basicConfig(filename=log.flog, format=log.format, level=log.level)
 def downloadFromGitHub(moduleName):
     logging.debug('Downloading Module ',moduleName)
     try:
+        if not  os.path.exists('cash/Modules/'):                                          # Create the directory if not exist yet
+            os.makedirs('cash/Modules/')
         sys.stdout.write('{:100s}'.format('Downloading Module, Please wait ... '))
         url = 'https://github.com/expovin/'+moduleName+'/archive/master.zip'
         urllib.request.urlretrieve(url, 'cash/Modules/'+moduleName+'-master.zip')
@@ -45,10 +47,12 @@ def downloadFromGitHub(moduleName):
 def unzip(source_filename, dest_dir):
     logging.debug('Unzip Modules'+source_filename+' in '+ dest_dir)
     try:
+        if not  os.path.exists(i.tmpPath):                                      # Create the directory if not exist yet
+            os.makedirs(i.tmpPath)
         zip_ref = zipfile.ZipFile(source_filename, 'r')
         zip_ref.extractall(dest_dir)
         zip_ref.close()
-        modules.append(source_filename.split(".")[0])  # Remove the file zip extension in the Folder name
+        modules.append(source_filename.split(".")[0])                           # Remove the file zip extension in the Folder name
         logging.debug('Unzip Modules'+source_filename+' successful')
         return 1
     except Exception:
@@ -188,6 +192,10 @@ def modifyRESTServer(Module):
         suffix = suffix.replace(':','')                                          # Just remove unsupported character
         suffix = suffix.replace(' ','')                                          # for file name
         rollbackName = 'RESTServer_'+suffix+'.py'
+
+        if not  os.path.exists(i.rollbackPath):                                  # Create the directory if not exist yet
+            os.makedirs(i.rollbackPath)
+
         shutil.move('RESTServer.py',os.path.join(i.rollbackPath,rollbackName))   # Moving the original file to rollback folder
 
         #fin = open(os.path.join(i.rollbackPath,rollbackName),'r')               # Open the original file
